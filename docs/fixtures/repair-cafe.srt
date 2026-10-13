@@ -1,0 +1,23 @@
+1
+00:00:00,000 --> 00:00:35,000
+Host: This is an original fictional demonstration of a neighborhood repair cafe. None of the people or results describe an actual organization. Today, organizer Nila explains a trial session for repairing clothing. Nila: We started with six chairs, a borrowed table, and two volunteers who knew basic sewing. Visitors brought their own garments. We offered help with loose buttons and small tears, but did not accept electrical appliances or promise that every item could be repaired.
+
+2
+00:00:40,000 --> 00:01:15,000
+Host: How did you decide what to offer first? Nila: We asked twelve neighbors which small repairs they had been postponing. Eight mentioned clothing, but that informal conversation was not a representative survey. It helped us choose a manageable first session. We listed the tools we already had before buying anything. The library lent us scissors, and a volunteer donated thread. We spent eighteen dollars on needles and replacement buttons. We did not charge visitors during the trial.
+
+3
+00:01:20,000 --> 00:01:55,000
+Host: What happened when visitors arrived? Nila: We wrote a short description of each request on a paper card without recording names or phone numbers. A volunteer checked whether the repair fit our skills. If it did, the visitor stayed at the table and practiced one step with us. If it did not, we explained the limitation. A torn leather bag was outside our experience, so we suggested looking for a specialist without recommending a particular business.
+
+4
+00:02:00,000 --> 00:02:35,000
+Host: Did the first session go smoothly? Nila: Not entirely. We had planned for each repair to take fifteen minutes, but teaching a visitor to sew took longer. A queue formed after the first hour. We stopped taking new requests for twenty minutes and explained the wait to people already there. For the next session, we will offer a smaller number of timed places and keep a few spaces for people who arrive without booking. That is a plan, not something we have tested yet.
+
+5
+00:02:40,000 --> 00:03:15,000
+Host: How did you judge whether the trial helped? Nila: We accepted nine garments and completed seven repairs. Two visitors decided to finish their repairs at home after practicing. We counted those separately rather than calling them completed. We did not weigh the garments or measure how long the repairs lasted, so we cannot claim a particular reduction in waste. Three visitors said they felt more comfortable trying a simple repair, but we did not collect feedback from everyone.
+
+6
+00:03:20,000 --> 00:03:55,000
+Host: What would you tell another neighborhood considering this? Nila: Choose one repair category that matches the volunteers' skills, state the limits clearly, and leave time for teaching. Record enough to improve the session without collecting personal details you do not need. Afterward, ask volunteers what felt manageable. Our next step is a second clothing session with fewer scheduled places. We are not expanding to appliances, and we will not describe the trial as proof that every neighborhood should use the same format.
