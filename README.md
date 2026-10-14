@@ -4,6 +4,8 @@ Give good ideas a second listen. A podcast transcript becomes a source-linked ov
 
 Built for the Thealon AI Engineering Challenge. The product is deliberately transcript-first; no audio playback times are invented.
 
+**Live demo:** [Open Recast](https://podcast-companion-five.vercel.app/)
+
 ## What makes it useful
 
 - Follow each insight to the original source passage.
@@ -58,7 +60,7 @@ Known quality limitation: the model audit can approve an unsupported detail even
 
 The application can be hosted as a Next.js app on Vercel. Set server-side `GEMINI_API_KEY`, `GEMINI_MODEL`, `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`, and optionally `DAILY_REQUEST_LIMIT`. Production generation fails closed if shared quota protection is absent or unavailable. The sample remains accessible.
 
-No public deployment has been made from this checkout. See [deployment checklist](docs/deployment.md). Do not expose the development server as a production service.
+Deployed on Vercel's Hobby plan at [podcast-companion-five.vercel.app](https://podcast-companion-five.vercel.app/). Production credentials are held in Vercel environment variables. The deployed app limit is 20 workflow attempts per UTC day, shared with any local testing using the same Redis counters; provider limits also apply. See [deployment checklist](docs/deployment.md).
 
 ## Engineering and submission notes
 
@@ -67,6 +69,7 @@ No public deployment has been made from this checkout. See [deployment checklist
 - [Actual debugging examples](docs/debugging.md)
 - [Verification record](docs/verification.md)
 - [Demo script and three next improvements](docs/submission.md)
+- [Recording runbook](docs/demo-runbook.md) and [submission message](docs/submission-message.md)
 - [Design decisions](docs/design.md) and [design skill review](docs/skill-review.md)
 - [Suggested commit chunks](docs/commit-plan.md)
 

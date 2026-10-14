@@ -10,7 +10,7 @@
 6. Export the study guide.
 7. Briefly explain one actual failure, the validation pipeline, and a limitation.
 
-Do not record API keys, environment files, account identifiers, or provider dashboards containing credentials. The user records and submits the final demonstration. Local live AI generation, revision, and timed export have been checked; a public deployment and smoke test on its URL are still outstanding. The fictional subtitle fixture and review rubric are in `docs/fixtures/`.
+Do not record API keys, environment files, account identifiers, or provider dashboards containing credentials. The user records and submits the final demonstration. The public app is at https://podcast-companion-five.vercel.app/; generation and timed export have been checked there. See `verification.md` for revision results, timeout behavior, and the unresolved output-quality limitation. The fictional subtitle fixture and review rubric are in `docs/fixtures/`; recording steps are in `docs/demo-runbook.md`.
 
 ## Discussion preparation
 
@@ -30,13 +30,17 @@ Do not record API keys, environment files, account identifiers, or provider dash
 
 ## Submission checklist
 
-- [ ] Public live URL tested
-- [x] Real generation and meaningful revision verified locally
+- [x] Public live URL deployed and smoke-tested; limitations recorded
+- [x] Real generation, meaningful revision, Compare and Undo verified on the public deployment
 - [x] Transcript parsing, chapters, quiz, revision UI and export implemented
 - [x] At least two approaches researched with primary-source links
 - [x] Architecture, debugging, limitations and maintenance documented
 - [x] Original permitted sample available
-- [ ] Additional real-source quality evaluation completed
-- [ ] User reviewed and committed the desired chunks
+- [ ] Follow-up: broader real-source quality evaluation (documented future improvement)
+- [x] Owner-authorized implementation commits and production deadline fix pushed to GitHub
 - [ ] Final demo recorded
-- [ ] Repository and client bundle checked for secrets before publishing
+- [x] Repository and client bundle checked for configured secrets before Git publication
+
+## Sending the submission
+
+Use [the prepared submission message](submission-message.md), add your demo video link, and send through the recruiter’s original email or form. The PDF requires a live app, source/setup, short video including revision, research comparison, engineering notes, and three prioritized improvements. It does not specify a submission address. Verify the video and repository are accessible to reviewers and be ready to explain the code yourself.

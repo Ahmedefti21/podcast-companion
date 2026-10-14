@@ -1,6 +1,6 @@
 # Verification record
 
-Date: 2026-10-13. Results below distinguish automated checks, browser checks, and blocked external work.
+Dates: 2026-10-13–14. Results below distinguish automated checks, browser checks, and blocked external work.
 
 ## Executed
 
@@ -32,10 +32,28 @@ The existing origin/main and local initial commit matched before publication. Fo
 
 The live audit rejected the known planned-versus-completed overstatement when tested alongside one qualified alternative, but missed it in a larger batch. Added explicit system instructions about intentions, attached cited passages separately to each audit item, and required brief reasoning before the support decision. A fresh live generation produced four supported quiz answers and a qualified summary, but still overstated home completion in one takeaway; the model audit again missed it. This limitation is **not resolved**. Visible citations, original source access, and the AI disclosure remain essential. The additional prompt changes are not presented as a successful factual-correctness fix. Broader evaluation and a stronger verification approach remain follow-up work.
 
-## Still required
+Local production-server smoke check (built app, port 3001): home returned 200 with `nosniff`, frame denial, and no `X-Powered-By` header. The real generate route returned 400 for invalid fields, 403 for a foreign Origin, 415 for non-JSON content, and 413 for an oversized body. All error responses carried `Cache-Control: no-store`. These checks did not call Gemini and do not replace testing the public deployment.
 
-- Evaluate more permitted real-world transcripts and recheck quiz explanations against an annotated reference set. The additional timed fixture is authored fiction, not a real interview or a general accuracy benchmark.
-- Deploy and test the public URL.
-- Record the final demo.
+## Public deployment checks (2026-10-13–14)
+
+- Vercel deployed commit `c2213d4` on the Hobby plan at https://podcast-companion-five.vercel.app/. Sensitive variables are scoped to Production, with a 20-workflow daily app allowance.
+- An unauthenticated HTTPS HEAD request returned 200 without a sign-in redirect. Security response headers included `nosniff` and frame denial. Real API requests returned 400 for invalid fields and 403 for a foreign Origin.
+- The browser uploaded the original timed repair-cafe fixture and generated six chapters and four questions. The 2:40 source link opened the correct original passage. This confirms live provider access and production Redis usage protection were configured.
+- The generated timed takeaway reproduced the known unsupported claim that home repairs had finished. The subsequent shorter revision was rejected by its source audit, retaining the original overview. The output-quality limitation remains unresolved.
+- Public Markdown download completed; the file included the AI disclosure, chapter information, quiz answers, and all six original timed source passages.
+
+- On October 14, public attempts with the 1,014-word original sample and a 339-word excerpt returned TIMEOUT/504. Input and the previous workspace were preserved. Vercel logs showed each first model call succeeding, then the shared 55-second deadline expiring before the workflow finished.
+- Reliability commit `0bb846c` raised provider/hosting/browser deadlines to 110/120/125 seconds while retaining existing call and usage limits. All 28 unit tests and the production build with TypeScript passed. Vercel marked the new production deployment Ready.
+- The first full-sample request after that change reached source validation but returned `AUDIT_INCOMPLETE`, retaining input. The timeout adjustment does not guarantee valid model output.
+
+- A subsequent 339-word excerpt completed public generation with four chapters and four questions. The source drawer and chapter link both opened the correct Passage 2; no timestamp was invented. This excerpt is now saved as `docs/fixtures/creative-habit-excerpt.txt`.
+- Completed the four public quiz questions with one deliberate confident mistake: the score was 3/4 and the return path contained only the supporting “The Nature of Ideas” chapter. Answers and explanations were checked against the four source paragraphs.
+- A real public Make shorter request succeeded. Compare displayed the original and revised overview; Undo restored the original, while all four quiz answers, the 3/4 score, and the confident mistake remained. The four chapters were unchanged.
+- Downloaded the resulting untimed Markdown guide. It included the restored overview, four chapters, four quiz questions with answers/explanations, all four original source passages and the AI disclosure. These successful checks establish this workflow case, not general factual accuracy or guaranteed availability. Takeaways still deserve source review, particularly when generalizing personal experience.
+
+## Submission handoff and follow-up
+
+- Follow-up quality work: evaluate more permitted real-world transcripts and recheck quiz explanations against an annotated reference set. The additional timed fixture is authored fiction, not a real interview or a general accuracy benchmark.
+- Owner action before submission: record the final demo, insert the video link in `submission-message.md`, verify reviewer access and submit through the original recruiter channel.
 
 Model-audit tests use controlled fixtures. They establish handling behavior, not real-model factual accuracy. No unmeasured latency, accuracy, hallucination rate or real operating-cost claims are made.

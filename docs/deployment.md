@@ -1,6 +1,10 @@
 # Deployment checklist
 
-Public deployment remains pending. The owner authorized the reviewed implementation to be committed in separate chunks and pushed to the existing GitHub repository. Git publication does not establish a working public app.
+Production deployment: https://podcast-companion-five.vercel.app/
+
+The owner approved transferring the local working credentials into Vercel's sensitive, production-only environment fields and deploying on the Hobby plan. Initial deployment used commit `c2213d4`. The GitHub integration has access to `Ahmedefti21/podcast-companion`; existing repository access was retained.
+
+The selected model is `gemini-3.5-flash-lite`; production `DAILY_REQUEST_LIMIT` is 20 workflow attempts per UTC day. This is an application traffic limit, not a promise of provider capacity. Public generation, source viewing, quiz feedback, a meaningful shorter revision, Compare, Undo and export were verified. Reliability commit `0bb846c` is deployed; see `verification.md` for failed and successful cases and the known output-quality limitation.
 
 ## Required before public generation
 
@@ -12,27 +16,27 @@ Public deployment remains pending. The owner authorized the reviewed implementat
 
 ## Vercel deployment
 
-Use the normal Next.js preset with Node.js 22+, install `npm ci`, build `npm run build`. Set all private environment variables in the deployment settings, never source files or NEXT_PUBLIC variables. Check the chosen hosting plan supports the configured 60-second route duration. The routes abort provider work after 55 seconds.
+Use the normal Next.js preset with Node.js 22+, install `npm ci`, build `npm run build`. Set all private environment variables in the deployment settings, never source files or NEXT_PUBLIC variables. The routes use a 120-second maximum duration and abort provider work after 110 seconds; the browser allows 125 seconds for response handling. Vercel documents a 300-second Hobby limit with Fluid Compute enabled by default; verify this when moving to another host. See [function duration limits](https://vercel.com/docs/functions/configuring-functions/duration).
 
-The owner can import the GitHub repository after reviewing and pushing their chosen chunks. A Vercel CLI upload is another option if repository integration is undesired; neither was performed here.
+Deployment uses the Vercel dashboard's GitHub integration. Future pushes to the connected production branch can trigger another production build.
 
 ### Exact dashboard handoff
 
-After the owner finishes the reviewed commits and push, import `Ahmedefti21/podcast-companion` from GitHub in Vercel. Use the repository root, the Next.js framework preset, Node.js 22.x, `npm ci`, and `npm run build`; leave the output directory at the framework default. The local checkout is not currently linked to a Vercel project.
+For a fresh setup, import `Ahmedefti21/podcast-companion` from GitHub in Vercel. Use the repository root and the Next.js framework preset; leave the output directory at the framework default. The initial deployment used Vercel's detected build/install defaults. The local checkout is not linked through Vercel CLI.
 
 Add these variables to the intended deployment environment before deploying:
 
-| Name | Value / source |
-| --- | --- |
-| `GEMINI_API_KEY` | The working private value from `.env.local`; save as Secret where available. |
-| `GEMINI_MODEL` | `gemini-3.5-flash-lite` |
-| `UPSTASH_REDIS_REST_URL` | The verified local REST URL. |
-| `UPSTASH_REDIS_REST_TOKEN` | The verified regular REST token; save as Secret where available. |
-| `DAILY_REQUEST_LIMIT` | Choose using the workflow/model-call distinction below; do not assume the local 100 fits the provider allowance. |
+| Name                       | Value / source                                                                                                   |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `GEMINI_API_KEY`           | The working private value from `.env.local`; save as Secret where available.                                     |
+| `GEMINI_MODEL`             | `gemini-3.5-flash-lite`                                                                                          |
+| `UPSTASH_REDIS_REST_URL`   | The verified local REST URL.                                                                                     |
+| `UPSTASH_REDIS_REST_TOKEN` | The verified regular REST token; save as Secret where available.                                                 |
+| `DAILY_REQUEST_LIMIT`      | Choose using the workflow/model-call distinction below; do not assume the local 100 fits the provider allowance. |
 
 Production and Preview variables have separate scopes. Only grant live credentials to environments that should generate real output. Reusing the same Redis database also shares the allowance with local testing. Variable changes apply to new deployments, so redeploy after correcting one. See [Vercel environment variables](https://vercel.com/docs/environment-variables) and [build settings](https://vercel.com/docs/builds/configure-a-build).
 
-Once deployed, use the assigned HTTPS URL for the smoke test below and add the verified URL to the README. Keep it marked pending until real generation and revision work there.
+Once deployed, use the assigned HTTPS URL for the smoke test below and add the verified URL to the README. Mark the workflow verified only after real generation and revision work there.
 
 ## Upstash setup for this project
 
