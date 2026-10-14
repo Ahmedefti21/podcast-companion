@@ -7,7 +7,7 @@ import { enforceQuota } from "@/lib/server/quota";
 import { readBody, errorResponse } from "@/lib/server/http";
 
 export const runtime = "nodejs";
-export const maxDuration = 60;
+export const maxDuration = 120;
 const input = z.object({
   text: z.string().max(1_000_000),
   filename: z.string().min(1).max(200),
@@ -21,7 +21,7 @@ export async function POST(request: Request) {
     const body = input.parse(await readBody(request));
     const transcript = parseTranscript(body.text, body.filename);
     const provider = createProvider(
-      AbortSignal.any([request.signal, AbortSignal.timeout(55000)]),
+      AbortSignal.any([request.signal, AbortSignal.timeout(110000)]),
       requestId,
     );
     await enforceQuota();

@@ -41,3 +41,13 @@ Unit tests insert a nonexistent `s999` reference and chapter gaps. The pipeline 
 **Change:** Made the revision/audit prompts explicit about fictional and hypothetical framing, plans versus observed outcomes, and informal feedback. Supplied a concrete summary word budget calculated from the original instead of relying only on a proportional instruction. Kept the server's existing length rejection and source checks.
 
 **Validation:** The next browser revision passed with a shorter summary that retained fictional framing and seven completed repairs out of nine. Compare and Undo worked, and quiz progress survived. Tests and build passed. The earlier quiz explanation also overstated a planned home repair as completed; the updated audit instruction addresses that distinction, but this exact quiz has not been rerun. Prompt changes reduce ambiguity; they are not deterministic factual verification.
+
+## Public generation exceeded the original deadline
+
+**Symptom:** Two public requests (1,014 words, then 339 words) returned the application's TIMEOUT response while retaining input and the prior workspace.
+
+**Evidence:** Vercel runtime logs showed a completed first model call for each request followed by TIMEOUT/504 roughly 18–19 seconds later. The logs establish that the key and first provider call worked; they do not establish whether the unfinished next step was structural repair or the source audit.
+
+**Change:** Increased the provider deadline from 55 to 110 seconds, the hosting duration from 60 to 120 seconds, and the browser deadline to 125 seconds. Updated the waiting message. The three-call budget, validation, cancellation and shared usage counters remain in effect. No automatic retry or alternate-model fallback was added.
+
+**Rationale:** Two sequential AI calls can outlast the original deadline. A bounded extension gives source checking time to finish; it does not guarantee provider availability. Vercel's documented Hobby Fluid Compute allowance supports this duration without upgrading the plan.

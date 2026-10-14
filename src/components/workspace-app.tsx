@@ -132,7 +132,7 @@ export function WorkspaceApp() {
             overview: episode.overview,
             mode,
           }),
-          signal: AbortSignal.timeout(60000),
+          signal: AbortSignal.timeout(125000),
         });
         const data = await response.json();
         if (!response.ok)

@@ -33,7 +33,7 @@ A valid citation is not proof of entailment, and a model audit can also be wrong
 
 ## Bounded execution
 
-Each request allows at most three generation calls (initial result, optional structural repair, audit), plus one token-count request. A 55-second abort signal covers provider operations; route maximum duration is 60 seconds. Each generation response is capped at 8,192 tokens. Shortening must reduce summary word count by at least 30% or it fails while retaining the previous version.
+Each request allows at most three generation calls (initial result, optional structural repair, audit), plus one token-count request. A 110-second abort signal covers provider operations; route maximum duration is 120 seconds and the browser allows 125 seconds for transport/response handling. The bounded extension accommodates generation followed by source auditing when provider latency rises. Each generation response is capped at 8,192 tokens. Shortening must reduce summary word count by at least 30% or it fails while retaining the previous version.
 
 Global shared limits: five requests per minute and a configurable daily request allowance (default 100, clamped to 1–1,000). An atomic Redis script updates counters across server instances. Counters include failed attempts; they contain no transcript or user identity. Local development has a process-local minute limit only. These limits bound requests, not exact monetary spend; enforce billing limits in the provider account as well. A single user can exhaust a shared allowance, which is a documented prototype limitation.
 

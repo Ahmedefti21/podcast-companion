@@ -67,7 +67,7 @@ export function EpisodeInput({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text, filename, permission }),
-        signal: AbortSignal.any([controller.signal, AbortSignal.timeout(60000)]),
+        signal: AbortSignal.any([controller.signal, AbortSignal.timeout(125000)]),
       });
       const data = await response.json();
       if (!response.ok)
@@ -213,7 +213,7 @@ export function EpisodeInput({
             <div>
               <strong>Reading, composing, and checking the source…</strong>
               <span>
-                This can take up to a minute. Your current episode is kept until the new one is
+                This can take up to two minutes. Your current episode is kept until the new one is
                 ready.
               </span>
             </div>
